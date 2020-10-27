@@ -2,38 +2,21 @@ const express = require("express");
 const app = express();
 const routes = require("./routes.js");
 var fetch = require("node-fetch");
-var level = require('level')
-var db = level('database');
-
-async function get(){
-  if()
-  db.get('counter', function (err, value) {
-    if (err) return "An error occured!" // likely the key was not found
- return value;
-  })
-}
-async function update(){
-db.put('counter', 1, function (err) {if(err){return "An error occured!"}});
-}
-
-
 
 app.disable("x-powered-by");
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/404.html");
 });
-app.get("/badge", (req, res) => {
-  res.send(`{"schemaVersion": 1,"label": "IPs caught","message": "${get()}","color": "orange"}`)
-});
-app.get("/:route", (req, res) => {
-  if (routes[req.params.route]) {
-    var ip = "8.8.8.8";
+
+app.get("/*", (req, res) => {
+  if (routes[req.path]) {
+    var ip = "8.8.8.1";
     console.log(ip);
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
-        routes[req.params.route][0]
-      }&ip=${ip}&comment=${routes[req.params.route][1]}`,
+        routes[req.path][0]
+      }&ip=${ip}&comment=${routes[req.path][1]}`,
       {
         method: "POST",
         headers: {
@@ -44,7 +27,6 @@ app.get("/:route", (req, res) => {
     )
       .then(res => res.text())
       .then(body => console.log(body));
-    update();
   }
   res.status(404).sendFile(__dirname + "/pages/404.html");
 });
