@@ -1,3 +1,3 @@
 module.exports = {
-  ".env": ["1,2", "Aah"]
+  ".env": ["1,2", "Tried to access "]
 };
