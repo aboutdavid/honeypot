@@ -7,7 +7,8 @@ app.get("/", (req, res) => {
 });
 app.get("/:route", (req, res) => {
   if (routes[req.params.route]) {
-    res.send("").status(500)
+    res.status(404).sendFile(__dirname + "/pages/404.html")
+    console.log(req.ip.replace(/::ffff:/gm, ""))
   } else {
     res.send("Not found. Sorry :/");
   }
