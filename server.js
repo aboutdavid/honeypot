@@ -6,9 +6,10 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 app.get("/:route", (req, res) => {
+  console.log(routes[req.query.route][0])
   if (routes[req.query.route]) {
     res.send(routes[req.query.route][1])
-    console.log(routes[req.query.route][1])
+    
   } else {
     res.send("Not found. Sorry :/");
   }
