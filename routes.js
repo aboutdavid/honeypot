@@ -1,5 +1,7 @@
 module.exports = {
-  "/*/.env": ["1,2", "Tried to access environmental variable (/.env file)"],
+  //
+  "/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
+  "/*/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
   "/api/jsonws/invoke": ["15,19", "Tried to POST web API, /api/jsonws/invoke"],
   "/.git//index": ["15,19", "Attempted to access git files, /.git//index"],
   "/?a=fetch&content=<php>die(@md5(HelloThinkCMF))</php>": ["15,19", "ThinkPHP exploit. /?a=fetch&content=<php>die(@md5(HelloThinkCMF))</php>"],
@@ -7,7 +9,15 @@ module.exports = {
   "/solr/admin/info/system?wt=json": ["15,19", "Trying to access solr admin page."],
   "/boaform/admin/formLogin": ["15,19", "Trying to access admin login: /boaform/admin/formLogin"],
   "/config/getuser?index=0": ["15,19", "Trying to access configuration files: /config/getuser?index=0"],
-  "": ["15,19", ""],
-  "": ["15,19", ""],
-  "": ["15,19", ""]
+  "/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php": ["15,19", "Attempting to access vendor files: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php"],
+  "/por/login_psw.csp": ["15,19", "Trying to access admin login pages: /por/login_psw.csp"],
+  "/ui/login.php": ["15,19", "Trying to access admin login pages: /ui/login.php"],
+  "/cgi-bin/login.cgi?requestname=2&cmd=0": ["15,19", "Trying to access admin login pages: /cgi-bin/login.cgi?requestname=2&cmd=0"],
+  "/GponForm/diag_Form?images/": ["15,19","Odd Request, trying to access some sort of form: /GponForm/diag_Form?images/"],
+  "//vendor/phpunit/phpunit/phpunit.xsd": ["15,19","Trying to access PHPUnit scripts: //vendor/phpunit/phpunit/phpunit.xsd"],
+  "//web/wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
+  "//wordpress/wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
+  "//wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
+  "//shop/wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
+  "": ["15,19",""],
 };
