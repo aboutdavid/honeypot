@@ -2,14 +2,31 @@ const express = require("express");
 const app = express();
 const routes = require("./routes.js");
 var fetch = require("node-fetch");
+const Keyv = require('keyv');
+const keyv = new Keyv('sqlite://database.sqlite');
+
+async function update(){
+  if (!await keyv.get('hp_counter')){
+    await keyv.set('hp_counter', 0);
+  }
+  await keyv.set('hp_counter', await keyv.get('hp_counter') + 1);
+}
+
+
+
+keyv.on('error', err => console.log('Connection Error', err));
 
 app.disable("x-powered-by");
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
+app.get("/shields", (req, res) => {
+  
+});
 app.get("/:route", (req, res) => {
   if (routes[req.params.route]) {
+    update();
     var ip = "10.0.0.1";
     console.log(ip);
     fetch(

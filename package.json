@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "keyv": "^4.0.3",
+    "@keyv/sqlite": "^2.0.2"
   },
   "engines": {
     "node": "12.x"
