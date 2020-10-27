@@ -12,7 +12,6 @@ app.get("/", (req, res) => {
 app.get("/*", (req, res) => {
   if (routes[req.path]) {
     var ip = "8.8.8.1";
-    console.log(ip);
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
         routes[req.path][0]

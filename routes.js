@@ -1,7 +1,8 @@
 module.exports = {
-  //
   "/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
-  "/*/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
+  "/larvel/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
+  "/admin/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
+  "/system/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
   "/api/jsonws/invoke": ["15,19", "Tried to POST web API, /api/jsonws/invoke"],
   "/.git//index": ["15,19", "Attempted to access git files, /.git//index"],
   "/?a=fetch&content=<php>die(@md5(HelloThinkCMF))</php>": ["15,19", "ThinkPHP exploit. /?a=fetch&content=<php>die(@md5(HelloThinkCMF))</php>"],
@@ -19,5 +20,7 @@ module.exports = {
   "//wordpress/wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
   "//wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
   "//shop/wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
-  "": ["15,19",""],
+  "//cms/wp-includes/wlwmanifest.xml": ["15,19","Attempting to access Wordpress wlwmanifest.xml file."],
+  "//xmlrpc.php?rsd": ["15,19","Suspicous request; //xmlrpc.php?rsd"],
+  "/manager/text/list": ["15,19","Trying to access admin files: /manager/text/list"],
 };
