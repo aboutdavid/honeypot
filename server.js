@@ -1,8 +1,13 @@
 const express = require("express");
 const app = express();
+const routes = require("./routes.js");
+
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
+});
+app.get("/:route", (req, res) => {
+  
 });
 
 const listener = app.listen(process.env.PORT, () => {
