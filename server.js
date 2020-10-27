@@ -5,13 +5,17 @@ var fetch = require("node-fetch");
 
 app.disable("x-powered-by");
 
+app.set("trust proxy", function(ip) {
+  return (/(10\.10\.([0-9]{1,3})\.([0-9]{1,3})|::ffff:127.0.0.1)/.test(ip));
+});
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/404.html");
 });
 
 app.get("/*", (req, res) => {
   if (routes[req.path]) {
-    var ip = "8.8.8.1";
+    var ip = req.ip;
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
         routes[req.path][0]
@@ -24,12 +28,11 @@ app.get("/*", (req, res) => {
         }
       }
     )
-      .then(res => res.text())
-      .then(body => console.log(body));
   }
+  console.log(`I just caught a user! Timestamp: ${Date.now()}`);
   res.status(404).sendFile(__dirname + "/pages/404.html");
 });
 
 const listener = app.listen(process.env.PORT, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+  console.log("Honeypot is listening on: " + listener.address().port);
 });

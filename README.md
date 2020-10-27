@@ -9,7 +9,7 @@
 Many bad bots will try to attack/DDoS your site. Those same bots will also go to other sites. So, with this honeypot, you can help other people by warning them.
 
 ### How to set it up:
-Remix the project [here.](https://glitch.com/edit/#!/remix/honeypot)
+Remix the project [here.](https://glitch.com/edit/#!/remix/honeypot) Thats all.
 
 ### How to add more traps:
 All traps are stored in `routes.js`. A normal entry looks something like:
