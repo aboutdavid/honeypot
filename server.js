@@ -9,18 +9,20 @@ app.get("/", (req, res) => {
 });
 app.get("/:route", (req, res) => {
   if (routes[req.params.route]) {
+    var ip = req.ip.replace(/::ffff:/gm, "");
     res.status(404).sendFile(__dirname + "/pages/404.html");
-    console.log(req.ip.replace(/::ffff:/gm, ""));
     var fetch = require("node-fetch");
-
-    fetch("https://api.abuseipdb.com/api/v2/report", {
+    console.log(ip)
+    var body = JSON.stringify({categories: routes[req.params.route][0], "ip": ip, "comment": routes[req.params.route][2]})
+    console.log(body)
+    fetch(1https://api.abuseipdb.com/api/v2/report", {
       method: "POST",
       headers: {
-        Key: process.env,
+        Key: process.env.ABUSEIPDB_API_KEY,
         Accept: "application/json"
       },
-      body: "categories=18,22"
-    });
+      body: body
+    }).then(res => res.text()).then(body => console.log(body));
   } else {
     res.send("Not found. Sorry :/");
   }
