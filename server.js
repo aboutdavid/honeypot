@@ -2,29 +2,29 @@ const express = require("express");
 const app = express();
 const routes = require("./routes.js");
 var fetch = require("node-fetch");
-const Keyv = require('keyv');
-const keyv = new Keyv('sqlite://database.sqlite');
+var level = require('level')
+var db = level('database');
 
-async function update(){
-  if (!await keyv.get('hp_counter')){
-    await keyv.set('hp_counter', 0);
-  }
-  await keyv.set('hp_counter', await keyv.get('hp_counter') + 1);
-}
 async function get(){
-  return await keyv.get('hp_counter');
+  if()
+  db.get('counter', function (err, value) {
+    if (err) return "An error occured!" // likely the key was not found
+ return value;
+  })
+}
+async function update(){
+db.put('counter', 1, function (err) {if(err){return "An error occured!"}});
 }
 
 
-keyv.on('error', err => console.log('Connection Error', err));
 
 app.disable("x-powered-by");
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+  res.sendFile(__dirname + "/pages/404.html");
 });
-app.get("/shields", (req, res) => {
-  res.json(`{"schemaVersion": 1,"label": "IPs caught","message": ${get()},"color": "orange"}`)
+app.get("/badge", (req, res) => {
+  res.send(`{"schemaVersion": 1,"label": "IPs caught","message": "${get()}","color": "orange"}`)
 });
 app.get("/:route", (req, res) => {
   if (routes[req.params.route]) {
