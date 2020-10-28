@@ -34,11 +34,15 @@ app.get("/*", (req, res) => {
         }
       }
     );
-  }
-  console.log(
+    console.log(
     `I just caught a user!\nTimestamp: ${Date.now()}\nPath: ${req.path}\nDescription: ${routes[req.path][1]}`
   );
-  res.status(404).sendFile(__dirname + "/pages/404.html");
+    if (config.webhookEnabled == true){
+      require("./webhooks.js").send(new Date().toString(), req.path, routes[req.path][1], ip)
+    }
+  }
+  
+  res.status(200).send("OK!");
 });
 
 const listener = app.listen(process.env.PORT, () => {
