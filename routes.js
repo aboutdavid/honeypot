@@ -1,6 +1,6 @@
 module.exports = {
   "/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
-  "/hidden": ["15,19", "Bad web bot scraping URLs."],
+  "/hidden": ["15,19", "Bad web bot trying to scrape URLs that are against the robots.txt"],
   "/larvel/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
   "/admin/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],
   "/system/.env": ["15,19", "Tried to access environmental variable file (/.env file)"],

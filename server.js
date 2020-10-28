@@ -8,7 +8,6 @@ app.disable("x-powered-by");
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/404.html");
-  console.log(req.headers["x-forwarded-for"]);
 });
 
 app.get("/*", (req, res) => {
@@ -26,7 +25,7 @@ app.get("/*", (req, res) => {
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
         routes[req.path][0]
-      }&ip=${ip}&comment=${routes[req.path][1]}`,
+      }&ip=${ip}&comment=${config.prefix}${routes[req.path][1]}`,
       {
         method: "POST",
         headers: {
