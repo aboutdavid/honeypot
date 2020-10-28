@@ -43,5 +43,5 @@ app.get("/*", (req, res) => {
 });
 
 const listener = app.listen(process.env.PORT, () => {
-  console.log("Honeypot is listening on: " + listener.address().port);
+  console.log("Honeypot is listening on port: " + listener.address().port);
 });
