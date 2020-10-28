@@ -1,3 +1,4 @@
 module.exports = {
-  "usingGlitch": true
+  "usingGlitch": true,
+  "whitelistedIPs": []
 }

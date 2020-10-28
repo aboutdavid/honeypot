@@ -19,6 +19,9 @@ app.get("/*", (req, res) => {
     } else {
       ip = req.ip;
     }
+    if (config.whitelistedIPs.includes(ip)){
+      
+    }
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
         routes[req.path][0]
