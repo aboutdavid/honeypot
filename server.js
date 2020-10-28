@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  if (routes[req.path]) {
+  if (routes[req.originalUrl]) {
     var ip = "";
     if (config.usingGlitch === true) {
       ip = req.headers["x-forwarded-for"].split(",")[0];
@@ -24,8 +24,8 @@ app.get("/*", (req, res) => {
     }
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
-        routes[req.path][0]
-      }&ip=${ip}&comment=${config.prefix}${routes[req.path][1]}`,
+        routes[req.originalUrl][0]
+      }&ip=${ip}&comment=${config.prefix}${routes[req.originalUrl][1]}`,
       {
         method: "POST",
         headers: {
@@ -36,14 +36,14 @@ app.get("/*", (req, res) => {
     );
     console.log(
       `I just caught a user!\nTimestamp: ${Date.now()}\nPath: ${
-        req.path
-      }\nDescription: ${routes[req.path][1]}`
+        req.originalUrl
+      }\nDescription: ${routes[req.originalUrl][1]}`
     );
     if (config.webhookEnabled == true) {
       require("./webhooks.js").send(
         new Date().toString(),
-        req.path,
-        routes[req.path][1],
+        req.originalUrl,
+        routes[req.originalUrl][1],
         ip
       );
     }
