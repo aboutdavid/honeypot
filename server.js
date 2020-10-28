@@ -36,7 +36,7 @@ app.get("/*", (req, res) => {
     );
   }
   console.log(
-    `I just caught a user!\nTimestamp: ${Date.now()}\nPath: ${req.path}`
+    `I just caught a user!\nTimestamp: ${Date.now()}\nPath: ${req.path}\nDescription: ${routes[req.path][1]}`
   );
   res.status(404).sendFile(__dirname + "/pages/404.html");
 });
