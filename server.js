@@ -18,8 +18,8 @@ app.get("/*", (req, res) => {
     } else {
       ip = req.ip;
     }
-    if (config.whitelistedIPs.includes(ip)){
-      res.status(200).send("OK!")
+    if (config.whitelistedIPs.includes(ip)) {
+      res.status(200).send("OK!");
       return;
     }
     fetch(
@@ -35,13 +35,20 @@ app.get("/*", (req, res) => {
       }
     );
     console.log(
-    `I just caught a user!\nTimestamp: ${Date.now()}\nPath: ${req.path}\nDescription: ${routes[req.path][1]}`
-  );
-    if (config.webhookEnabled == true){
-      require("./webhooks.js").send(new Date().toString(), req.path, routes[req.path][1], ip)
+      `I just caught a user!\nTimestamp: ${Date.now()}\nPath: ${
+        req.path
+      }\nDescription: ${routes[req.path][1]}`
+    );
+    if (config.webhookEnabled == true) {
+      require("./webhooks.js").send(
+        new Date().toString(),
+        req.path,
+        routes[req.path][1],
+        ip
+      );
     }
   }
-  
+
   res.status(200).send("OK!");
 });
 

@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.1",
-    "webhook-discord": "^3.7.6"
+    "node-fetch": "^2.6.1"
   },
   "engines": {
     "node": "12.x"
@@ -22,8 +21,12 @@
   },
   "license": "MIT",
   "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+    "honeypot",
+    "express",
+    "discord",
+    "discord-webhooks"
+  ],
+  "devDependencies": {
+    "webhook-discord": "^3.7.7"
+  }
 }
