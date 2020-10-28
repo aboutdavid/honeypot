@@ -1,1 +1,7 @@
 .env
+.glitch-assets
+.node-gyp
+node_modules
+.git
+.data
+.bash_history

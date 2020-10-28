@@ -1,5 +1,6 @@
 module.exports = {
   "usingGlitch": true,
   "whitelistedIPs": [],
-  "prefix": "Automated Report (honeypot): "
+  "prefix": "Automated Report (honeypot): ",
+  "": ""
 }
