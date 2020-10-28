@@ -20,7 +20,8 @@ app.get("/*", (req, res) => {
       ip = req.ip;
     }
     if (config.whitelistedIPs.includes(ip)){
-      
+      res.status(404).sendFile(__dirname + "/pages/404.html");
+      return;
     }
     fetch(
       `https://api.abuseipdb.com/api/v2/report?categories=${
