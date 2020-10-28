@@ -19,7 +19,7 @@ app.get("/*", (req, res) => {
       ip = req.ip;
     }
     if (config.whitelistedIPs.includes(ip)){
-      res.status(404).sendFile(__dirname + "/pages/404.html");
+      res.status(200).send("OK!")
       return;
     }
     fetch(
