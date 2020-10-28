@@ -20,4 +20,10 @@ All traps are stored in `routes.js`. A normal entry looks something like:
 "/path/to/trap": ["15,19","A normal description."]
 ```
 If you visit PROJECT_NAME.glitch.me/path/to/trap, then you would be reported for "A normal description." with the tags 'Hacking' and 'Bad web bot'
-Now 
+This explains more:
+```jsx
+"/trap": ["category,category", "Description"]
+```
+- "/trap": The path to the trap (website.com/trap)
+- "category,category": are the nubers assoicated with categories of attacks. Can be found [here](https://www.abuseipdb.com/categories)
+- "Description": The description of the attack
