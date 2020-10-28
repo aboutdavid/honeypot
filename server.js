@@ -11,6 +11,7 @@ app.set("trust proxy", function(ip) {
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/pages/404.html");
+  console.log(req.headers["x-forwarded-for"])
 });
 
 app.get("/*", (req, res) => {
